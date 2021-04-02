@@ -1,7 +1,8 @@
 const createError = require('http-errors');
 const express = require('express');
 const mongoose = require('mongoose');
-const mongoDB = 'mongodb+srv://Bigice:BigiceUser@cluster0.rwd5h.mongodb.net/local_library?retryWrites=true&w=majority';
+const dev_db_url = 'mongodb+srv://Bigice:BigiceUser@cluster0.rwd5h.mongodb.net/local_library?retryWrites=true&w=majority';
+const mongoDB = process.env.MONGODB_URI || dev_db_url;
 mongoose.connect(mongoDB, { useNewUrlParser: true , useUnifiedTopology: true});
 
 const db = mongoose.connection;
