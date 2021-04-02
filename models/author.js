@@ -21,7 +21,7 @@ AuthorSchema
 
 // Virtual for author's lifespan
 AuthorSchema
-.virtual('lifespan')
+.virtual('lifespan_formatted')
 .get(function () {
   //return (this.date_of_death.getYear() - this.date_of_birth.getYear()).toString();
   let dateBirth = this.date_of_birth ? DateTime.fromJSDate(this.date_of_birth).toLocaleString(DateTime.DATE_MED) : " ";
