@@ -22,20 +22,14 @@ AuthorSchema
 // Virtual for author's lifespan
 AuthorSchema
 .virtual('lifespan_formatted')
-.get(function(){
- var birth =  DateTime.fromJSDate(this.date_of_birth).toLocaleString(DateTime.DATE_MED);
- var death =  DateTime.fromJSDate(this.date_of_death).toLocaleString(DateTime.DATE_MED);
+.get(function () {
+  //return (this.date_of_death.getYear() - this.date_of_birth.getYear()).toString();
+  let dateBirth = this.date_of_birth ? DateTime.fromJSDate(this.date_of_birth).toLocaleString(DateTime.DATE_MED) : " ";
+  let dateDeath = this.date_of_death ? DateTime.fromJSDate(this.date_of_death).toLocaleString(DateTime.DATE_MED) : " ";
 
- if( death =='Invalid DateTime'){
-    death = 'unknown'
- }
- if( birth =='Invalid DateTime'){
-   birth = 'unknown'
-}
+  return `${dateBirth} - ${dateDeath}`
 
-  return `${birth} - ${death}`
- 
-})
+});
 
 // Virtual for author's URL
 AuthorSchema
